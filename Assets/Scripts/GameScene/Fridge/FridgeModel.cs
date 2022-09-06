@@ -27,8 +27,10 @@ namespace GameScene.Fridge
         [Serializable] public class Settings
         {
             [SerializeField] private float _speed;
-            
+            [Range(0, 1f)] [SerializeField] private float _rotateSpeed;
+
             public float Speed => _speed;
+            public float RotateSpeed => _rotateSpeed;
         }
     }
 }

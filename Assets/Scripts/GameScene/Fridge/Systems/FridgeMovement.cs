@@ -1,54 +1,69 @@
-using DG.Tweening;
+using GameScene.Systems;
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.AI;
+using Zenject;
 
 namespace GameScene.Fridge.Systems
 {
     public class FridgeMovement
     {
-        private readonly CharacterController _character;
         private readonly PlayerInput _input;
-        private readonly Transform _fridge;
+        private readonly CharacterController _character;
 
+        private readonly FridgeDirectionMoveCalculator _directionMoveCalculator;
+        private readonly Transform _fridge;
         private readonly Speed _speed;
-        private const float SpeedMultiplier = 0.5f;
+        
+        private const float SpeedMultiplier = 0.005f;
         private const float AccelerationTime = 0.5f;
 
-        private bool _isMove = false;
+        private bool _isMove;
         
-        public FridgeMovement(Transform fridge, PlayerInput input, CharacterController character, FridgeModel.Settings settings)
+        public FridgeMovement(PlayerInput input,
+            FridgeModel.Settings settings,
+            CharacterController characterController,
+            FridgeDirectionMoveCalculator directionMoveCalculator,
+            Transform fridge)
         {
-            _fridge = fridge;
             _input = input;
-            _character = character;
+            _character = characterController;
+            _directionMoveCalculator = directionMoveCalculator;
+            _fridge = fridge;
 
             _speed = new Speed(settings.Speed, AccelerationTime);
         }
-
 
         public void Update()
         {
             if (_input.IsTouch)
             {
-                if (!_isMove)
-                {
-                    _speed.StartAcceleration();
-                    _isMove = true;
-                }
+                TrySetStartInputState();
                 Move();
             }
-            if (_isMove)
+            else
             {
-                _speed.StopAcceleration();
-                _isMove = false;
+                TrySetEndInputState();
             }
         }
         
         private void Move()
+        { 
+            _character.Move(_directionMoveCalculator.Calculate() * _speed.CurrentSpeed * SpeedMultiplier);
+            _fridge.rotation = Quaternion.LookRotation(_directionMoveCalculator.Calculate());
+        }
+        
+        private void TrySetStartInputState()
         {
-            var direction = new Vector3(_input.DirectionDrag.x, 0f, _input.DirectionDrag.y);
-            _character.Move(direction * _speed.CurrentSpeed * SpeedMultiplier);
-            _fridge.rotation = Quaternion.LookRotation(direction);
+            if (_isMove) return;
+            _speed.StartAcceleration();
+            _isMove = true;
+        }
+
+        private void TrySetEndInputState()
+        {
+            if (!_isMove) return;
+            _speed.StopAcceleration();
+            _isMove = false;
         }
         
     }

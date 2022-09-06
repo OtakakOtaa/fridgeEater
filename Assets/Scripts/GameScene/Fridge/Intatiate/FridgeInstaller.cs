@@ -1,5 +1,6 @@
 using GameScene.Fridge.Systems;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 namespace GameScene.Fridge
@@ -8,11 +9,10 @@ namespace GameScene.Fridge
     {
         [SerializeField] private FridgeModel.Settings _settings;
         
-        
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<FridgeModel>().AsSingle();
-            Container.Bind<FridgeView>().FromComponentOnRoot().AsSingle();
+            Container.Bind<FridgeView>().FromComponentOnRoot();
             Container.Bind<FridgeModel.Settings>().FromInstance(_settings);
             
             BindComponents();
@@ -21,12 +21,13 @@ namespace GameScene.Fridge
 
         private void BindComponents()
         {
-            Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
-            Container.Bind<CharacterController>().FromComponentOnRoot().AsSingle();
+            Container.Bind<Transform>().FromComponentOnRoot();
+            Container.Bind<CharacterController>().FromComponentOnRoot();
         }
 
         private void BindSystems()
         {
+            Container.Bind<FridgeDirectionMoveCalculator>().AsSingle().NonLazy();
             Container.Bind<FridgeMovement>().AsSingle().NonLazy();
         }
     }
