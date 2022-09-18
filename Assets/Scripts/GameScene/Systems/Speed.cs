@@ -2,11 +2,11 @@
 using NSTools.Core;
 using UnityEngine;
 
-namespace GameScene.Fridge
+namespace GameScene.Systems
 {
     public class Speed
     {
-        public float CurrentSpeed { get; private set; }
+        public float CurrentSpeed { get; private set; } = 0;
         private readonly float _maxSpeed;
         private readonly float _accelerationTime;
         private Tween _acceleration;
@@ -22,11 +22,12 @@ namespace GameScene.Fridge
         {
             var ezPt = EZ.BackIn(pt);
             CurrentSpeed = Mathf.Lerp(0f, _maxSpeed, ezPt);
+            Debug.Log(nameof(CurrentSpeed) + nameof(CurrentSpeed) + " " + CurrentSpeed);
         }
         
         public void StartAcceleration()
         {
-            _acceleration = DOTween.To(CalculateSpeed, 0f, _maxSpeed, _accelerationTime);
+            _acceleration = DOTween.To(CalculateSpeed, 0f, 1f, _accelerationTime);
         }
 
         public void StopAcceleration()

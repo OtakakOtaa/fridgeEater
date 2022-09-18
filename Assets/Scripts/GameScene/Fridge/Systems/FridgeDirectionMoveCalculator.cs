@@ -10,10 +10,11 @@ namespace GameScene.Fridge.Systems
         private readonly Transform _fridge;
         private readonly FridgeModel.Settings _settings;
         
-        public FridgeDirectionMoveCalculator(PlayerInput input, 
+        public FridgeDirectionMoveCalculator(
+            PlayerInput input, 
             GizmosRenderer gizmosRenderer,
             FridgeModel.Settings settings,
-            Transform fridge)
+            Transform fridge) 
         {
             _input = input;
             _gizmosRenderer = gizmosRenderer;
@@ -32,18 +33,18 @@ namespace GameScene.Fridge.Systems
             {
                 var color = Gizmos.color;
                 Gizmos.color = Color.blue;
-                Gizmos.DrawLine(_fridge.position, _fridge.position + moveDirection);
-                Gizmos.DrawSphere(_fridge.position, 0.2f);
+                var position = _fridge.position;
+                Gizmos.DrawLine(position, position + moveDirection);
+                Gizmos.DrawSphere(position, 0.2f);
                 Gizmos.color = color;
             });
 
-            
             moveDirection = Vector3.RotateTowards(
                 _fridge.forward, 
                 moveDirection, 
                 _settings.RotateSpeed, 
                 0f
-                );
+            );
 
             return moveDirection;
         }

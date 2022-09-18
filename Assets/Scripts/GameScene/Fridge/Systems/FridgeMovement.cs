@@ -15,8 +15,7 @@ namespace GameScene.Fridge.Systems
         private readonly Speed _speed;
         
         private const float SpeedMultiplier = 0.005f;
-        private const float AccelerationTime = 0.5f;
-
+        
         private bool _isMove;
         
         public FridgeMovement(PlayerInput input,
@@ -30,7 +29,7 @@ namespace GameScene.Fridge.Systems
             _directionMoveCalculator = directionMoveCalculator;
             _fridge = fridge;
 
-            _speed = new Speed(settings.Speed, AccelerationTime);
+            _speed = new Speed(settings.Speed, settings.AccelerationTime);
         }
 
         public void Update()
@@ -58,13 +57,11 @@ namespace GameScene.Fridge.Systems
             _speed.StartAcceleration();
             _isMove = true;
         }
-
         private void TrySetEndInputState()
         {
             if (!_isMove) return;
             _speed.StopAcceleration();
             _isMove = false;
         }
-        
     }
 }

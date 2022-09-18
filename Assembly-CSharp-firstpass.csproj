@@ -68,6 +68,7 @@
      <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
      <Compile Include="Assets\Plugins\UnityPlug\DOTween_1_2_632\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
      <Compile Include="Assets\Plugins\UnityPlug\EZ-main\ez.cs" />
+     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
      <None Include="Assets\Plugins\UnityPlug\DOTween_1_2_632\DOTween\readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/2020.3.35f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -751,6 +752,10 @@
       <Project>{3004fd40-4786-4159-f40b-ea132ca9fe2a}</Project>
       <Name>Zenject-PoolMonitor-Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{1c3ad956-f385-6114-c4de-0b324858fb54}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
       <Project>{f90f63b3-8e4f-d271-e1e1-4305a3d52647}</Project>
       <Name>Zenject-ReflectionBaking-Editor</Name>
@@ -758,6 +763,26 @@
     <ProjectReference Include="Zenject.csproj">
       <Project>{fd1b1eef-68ea-da7a-7d88-b3b59a96575d}</Project>
       <Name>Zenject</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{3c017f07-2e9c-0752-4987-e6a98adb1b38}</Project>
+      <Name>UniTask.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{b4b3299e-f9ed-4f0f-35b8-e528a53a487c}</Project>
+      <Name>UniTask.Addressables</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{2b1570d6-40c7-ecaf-8c77-683fa3bd37f7}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{79ad3529-fe35-be87-540e-40a0f253a1e4}</Project>
+      <Name>UniTask.Linq</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{9b086c93-5e34-3994-4b38-ffdc0d6b9a6f}</Project>
+      <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

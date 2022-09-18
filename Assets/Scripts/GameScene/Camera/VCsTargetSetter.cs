@@ -1,7 +1,8 @@
 ﻿using System;
 using Cinemachine;
-using EventsSystem;
+using EventsSystem.Signals;
 using UnityEngine;
+using Zenject;
 
 namespace GameScene.Camera
 {
@@ -9,10 +10,10 @@ namespace GameScene.Camera
     {
         private readonly VCs _vcs;
 
-        public VCsTargetSetter(VCs vcs, EventBus eventBus)
+        public VCsTargetSetter(VCs vcs, SignalBus signalBus)
         {
             _vcs = vcs;
-            eventBus.AddListener<StartGameEvent>(evt => BindTarget(evt.PlayerTransform));
+            signalBus.Subscribe<StartGameSceneSignal>(evt => BindTarget(evt.Fridge));
         }
 
         private void BindTarget(Transform target)

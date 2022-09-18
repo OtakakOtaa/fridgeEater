@@ -1,25 +1,23 @@
-﻿using EventsSystem;
+﻿using EventsSystem.Signals;
 using GameScene.Fridge;
-using UnityEngine;
 using Zenject;
 
-namespace GameScene
+namespace GameScene.Systems
 {
     public class GameSceneGate : IInitializable
     {
-        private EventBus _eventBus;
-        private FridgeModel _fridge;
+        private readonly SignalBus _signalBus;
+        private readonly FridgeModel _fridge;
         
-        public GameSceneGate(EventBus eventBus, FridgeModel fridge)
+        public GameSceneGate(SignalBus signalBus, FridgeModel fridge)
         {
-            _eventBus = eventBus;
+            _signalBus = signalBus;
             _fridge = fridge;
         }
         
         public void Initialize()
         {
-            _eventBus.GameSceneEvents.StartGame.PlayerTransform = _fridge.Transform;
-            _eventBus.Broadcast(_eventBus.GameSceneEvents.StartGame);
+            _signalBus.Fire(new StartGameSceneSignal(_fridge.Transform));
         }
     }
 }

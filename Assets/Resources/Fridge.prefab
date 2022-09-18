@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings:
-    _speed: 9
+    _speed: 20
+    _accelerationTime: 1.3
     _rotateSpeed: 1
 --- !u!143 &809225614409906502
 CharacterController:

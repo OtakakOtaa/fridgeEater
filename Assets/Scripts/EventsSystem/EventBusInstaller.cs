@@ -1,4 +1,5 @@
-﻿using Zenject;
+using EventsSystem.Signals;
+using Zenject;
 
 namespace EventsSystem
 {
@@ -6,8 +7,13 @@ namespace EventsSystem
     {
         public override void InstallBindings()
         {
-            Container.Bind<GameSceneEvents>().AsSingle().NonLazy();
-            Container.Bind<EventBus>().AsSingle().NonLazy();
+            SignalBusInstaller.Install(Container);
+            AddSignals();
+        }
+        
+        private void AddSignals()
+        {
+            Container.DeclareSignal<StartGameSceneSignal>();
         }
     }
 }

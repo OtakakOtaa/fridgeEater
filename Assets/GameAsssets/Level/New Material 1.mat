@@ -59,6 +59,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ParallaxMapping_e4efb63bd1e24dc8af36d488fc3a6fa6_Heightmap_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -77,6 +81,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_52fe94ab0b9d41918fd0f464edee6488: 1
+    - Vector1_dd160911464847be9686ed865ca031f1: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -93,15 +98,15 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseIntensity: 0.58
+    - _NoiseIntensity: 0
     - _NoizeIntensivity: 1
     - _OcclusionStrength: 1
-    - _Opacity: 0.64
+    - _Opacity: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Size: 1.82
-    - _Smoothness: 0.6
+    - _Size: 0
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -110,10 +115,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.16037738, g: 0.11861874, b: 0.11861874, a: 1}
-    - _Color: {r: 0.16037738, g: 0.11861874, b: 0.11861874, a: 1}
+    - Color_7d040ec80ab0415fb055b919aa832554: {r: 0.3773585, g: 0.31470275, b: 0.31470275, a: 1}
+    - _BaseColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+    - _Color: {r: 0.7830189, g: 0.27627268, b: 0.27627268, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Position: {r: 0.5533323, g: 0.31559193, b: 9.999998, a: 0}
+    - _Position: {r: 0.5561183, g: 0.40515855, b: 10.64175, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3918591132013791738
