@@ -1,9 +1,8 @@
 using GameScene.Fridge.Systems;
 using UnityEngine;
-using UnityEngine.AI;
 using Zenject;
 
-namespace GameScene.Fridge
+namespace GameScene.Fridge.Intatiate
 {
     public class FridgeInstaller : MonoInstaller
     {
@@ -13,6 +12,7 @@ namespace GameScene.Fridge
         {
             Container.BindInterfacesAndSelfTo<FridgeModel>().AsSingle();
             Container.Bind<FridgeView>().FromComponentOnRoot();
+            Container.Bind<FridgeRule>().AsSingle().NonLazy();
             Container.Bind<FridgeModel.Settings>().FromInstance(_settings);
             
             BindComponents();

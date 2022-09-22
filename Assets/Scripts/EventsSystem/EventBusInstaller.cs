@@ -14,6 +14,7 @@ namespace EventsSystem
         private void AddSignals()
         {
             Container.DeclareSignal<StartGameSceneSignal>();
+            Container.DeclareSignal<FridgeInitializeSignal>();
         }
     }
 }

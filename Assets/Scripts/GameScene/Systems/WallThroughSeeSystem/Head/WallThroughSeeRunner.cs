@@ -14,19 +14,19 @@ namespace GameScene.Systems.WallThroughSeeSystem.Head
         public BoolReactiveProperty Run { get; private set; }
         public ReactiveCommand TargetSelected { get; private set; }
 
-        public WallThroughSeeRunner(SignalBus signalBus, Settings settings)
+        public WallThroughSeeRunner(Settings settings)
         {
             _settings = settings;
             Run = new BoolReactiveProperty(false);
             TargetSelected = new ReactiveCommand();
-            
-            signalBus.Subscribe<StartGameSceneSignal>( ev =>
-            {
-                _target = ev.Fridge;
-                TargetSelected?.Execute();
-            });
         }
 
+        public void BindToTarget(Transform target)
+        {
+            _target = target;
+            TargetSelected?.Execute();
+        }
+        
         public void Tick()
         {
             if(_target != null) 

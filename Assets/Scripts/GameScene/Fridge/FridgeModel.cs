@@ -1,5 +1,6 @@
 using System;
 using GameScene.Fridge.Systems;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -9,13 +10,15 @@ namespace GameScene.Fridge
     {
         private FridgeView _fridgeView;
         private FridgeMovement _fridgeMovement;
-
+        
         public Transform Transform => _fridgeView.transform;
         
         public FridgeModel(FridgeMovement fridgeMovement, FridgeView fridgeView)
         {
             _fridgeMovement = fridgeMovement;
             _fridgeView = fridgeView;
+            
+            Debug.Log(nameof(FridgeModel));
         }
 
         public void Tick()
@@ -33,6 +36,18 @@ namespace GameScene.Fridge
             public float Speed => _speed;
             public float RotateSpeed => _rotateSpeed;
             public float AccelerationTime => _accelerationTime;
+        }
+
+        public class Factory : PlaceholderFactory<FridgeModel>
+        {
+            private FridgeModel _fridgeModel;
+            public override FridgeModel Create()
+            {
+                if (_fridgeModel == null)
+                    return _fridgeModel = base.Create();
+                else
+                    return _fridgeModel;
+            }
         }
     }
 }

@@ -10,13 +10,12 @@ namespace GameScene.Camera
     {
         private readonly VCs _vcs;
 
-        public VCsTargetSetter(VCs vcs, SignalBus signalBus)
+        public VCsTargetSetter(VCs vcs)
         {
             _vcs = vcs;
-            signalBus.Subscribe<StartGameSceneSignal>(evt => BindTarget(evt.Fridge));
         }
 
-        private void BindTarget(Transform target)
+        public void BindTarget(Transform target)
         {
             _vcs.MainGameCamera.Follow = target;
         }
