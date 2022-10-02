@@ -12,6 +12,7 @@ namespace GameScene.Systems
         {
             BindGizmos();
             BindPlayerInput();
+            BindGameTimer();
         }
         
         private void BindGizmos()
@@ -22,6 +23,10 @@ namespace GameScene.Systems
         {
             Container.Bind<FloatingJoystick>().FromInstance(_joystick);
             Container.BindInterfacesAndSelfTo<PlayerInput>().AsSingle();
+        }
+        private void BindGameTimer()
+        {
+            Container.BindInterfacesAndSelfTo<GameTimer>().AsSingle();
         }
     }
 }

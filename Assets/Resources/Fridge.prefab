@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 5496489951954970536}
   - component: {fileID: 5955881305592400646}
   - component: {fileID: 790543332837448338}
+  - component: {fileID: -3386465872338639541}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Untagged
@@ -424,6 +425,8 @@ MonoBehaviour:
     _speed: 20
     _accelerationTime: 0.64
     _rotateSpeed: 0.11
+    _hungerDamage: 0
+    _hungerDamageDeltaDelay: 0
 --- !u!114 &5955881305592400646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,3 +457,16 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &-3386465872338639541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063243903879765614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.980165, z: 1}
+  m_Center: {x: 0, y: -0.002900511, z: 0}

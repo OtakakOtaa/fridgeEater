@@ -1,7 +1,7 @@
 using GameScene.Systems;
 using UnityEngine;
 
-namespace GameScene.Fridge.Systems.Movement
+namespace GameScene.Fridge.Model.Systems.Movement
 {
     public class FridgeMovement
     {

@@ -3,6 +3,7 @@ using EventsSystem.Signals;
 using GameScene.Camera;
 using GameScene.Fridge;
 using GameScene.Fridge.Instatiate;
+using GameScene.Fridge.Model;
 using GameScene.Shelter_entities;
 using GameScene.Shelter_entities.Services;
 using GameScene.Systems.WallThroughSeeSystem.Head;
