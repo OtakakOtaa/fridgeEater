@@ -24,7 +24,6 @@ namespace GameScene.Systems
         {
             _startingPoint = (int)UnityEngine.Time.time;
             Time.Value = 0;
-            
             CountingTime();
         }
         

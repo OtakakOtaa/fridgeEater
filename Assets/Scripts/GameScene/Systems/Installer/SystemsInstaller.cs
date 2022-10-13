@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameScene.Systems.WayPointProvider_;
+using UnityEngine;
 using Zenject;
 
 namespace GameScene.Systems
@@ -7,12 +8,15 @@ namespace GameScene.Systems
     {
         [SerializeField] private GizmosRenderer _gizmosRenderer;
         [SerializeField] private FloatingJoystick _joystick;
-
+        [SerializeField] private WayPointProvider _wayPointProvider;
+        
+        
         public override void InstallBindings()
         {
             BindGizmos();
             BindPlayerInput();
             BindGameTimer();
+            BindWayPointProvider();
         }
         
         private void BindGizmos()
@@ -27,6 +31,12 @@ namespace GameScene.Systems
         private void BindGameTimer()
         {
             Container.BindInterfacesAndSelfTo<GameTimer>().AsSingle();
+        }
+
+        private void BindWayPointProvider()
+        {
+            Container.Bind<WayPointProvider>().FromInstance(_wayPointProvider);
+            Container.Bind<WayPointPool>().AsSingle();
         }
     }
 }

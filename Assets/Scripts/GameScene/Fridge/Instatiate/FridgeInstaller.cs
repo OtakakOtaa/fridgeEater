@@ -1,6 +1,7 @@
 using GameScene.Fridge.Model;
 using GameScene.Fridge.Model.Systems.FridgeSatiety;
 using GameScene.Fridge.Model.Systems.Movement;
+using GameScene.Fridge.View;
 using UnityEngine;
 using Zenject;
 

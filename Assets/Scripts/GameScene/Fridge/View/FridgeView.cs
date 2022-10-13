@@ -3,7 +3,7 @@ using TMPro;
 using UniRx;
 using UnityEngine;
 
-namespace GameScene.Fridge
+namespace GameScene.Fridge.View
 {
     public class FridgeView : MonoBehaviour
     {
@@ -15,15 +15,15 @@ namespace GameScene.Fridge
         private SatietyProgressBar _satietyProgressBar;
 
         private readonly CompositeDisposable _disposable = new();
-        
-        private void Start()
-        {
+
+        public void Initialize()
+        { 
             _satietyProgressBar = new SatietyProgressBar(_progressBar, _progressBarShader, _percentValue);
         }
-
+        
         private void Update()
         {
-            _satietyProgressBar.LookAtCamera();
+            _satietyProgressBar?.LookAtCamera();
         }
 
         public void SubscribeToModel(FridgeInitializeSignal fridgeInitializeSignal)

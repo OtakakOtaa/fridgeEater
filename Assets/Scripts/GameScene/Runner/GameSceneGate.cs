@@ -6,7 +6,9 @@ using GameScene.Fridge.Instatiate;
 using GameScene.Fridge.Model;
 using GameScene.Shelter_entities;
 using GameScene.Shelter_entities.Services;
+using GameScene.Systems;
 using GameScene.Systems.WallThroughSeeSystem.Head;
+using GameScene.Systems.WayPointProvider_;
 using UniRx;
 using Zenject;
 
@@ -21,7 +23,7 @@ namespace GameScene.Runner
         [Inject] private readonly WallThroughSeeRunner _wallThroughSeeRunner;
         [Inject] private readonly FridgeModel.Factory _fridgeModelFactory;
         [Inject] private readonly StartTracker _startTracker;
-
+        [Inject] private readonly WayPointProvider _wayPointProvider;
         #region NonLazyInitialize
         
         [Inject] private readonly ShelterPool _shelterPool;
@@ -49,6 +51,7 @@ namespace GameScene.Runner
                 .Subscribe( _ => 
                 {
                     _shelterProvider.GatherAllShelterToScene();
+                    _wayPointProvider.GatherWayPoint();
                     _signalBus?.Fire<StartGameSceneSignal>(); 
                 })
                 .AddTo(_disposable);

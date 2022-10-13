@@ -2,6 +2,7 @@
 using EventsSystem;
 using EventsSystem.Signals;
 using GameScene.Fridge.Model;
+using GameScene.Fridge.View;
 using GameScene.Systems;
 using UniRx;
 using UnityEngine;
@@ -27,9 +28,12 @@ namespace GameScene.Fridge
             _fridgeModel = fridgeModel;
             _fridgeView = fridgeView;
             
-            SubscribeModel();
             var signal = CreateInitializeFridgeSignal();
-            _fridgeView.SubscribeToModel(signal);
+            InitializeView(signal);
+            
+            SubscribeModel();
+            SubscribeView();
+            
             _signalBus?.Fire(signal);
         }
 
@@ -44,6 +48,16 @@ namespace GameScene.Fridge
                 .AddTo(_disposable);
         }
 
+        private void SubscribeView()
+        {
+        }
+        
+        private void InitializeView(FridgeInitializeSignal signal)
+        {
+            _fridgeView.Initialize();
+            _fridgeView.SubscribeToModel(signal);
+        }
+        
         private FridgeInitializeSignal CreateInitializeFridgeSignal()
         {
             return new FridgeInitializeSignal
